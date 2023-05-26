@@ -3,7 +3,7 @@ import hashlib
 import numpy as np
 from PIL import Image
 # Define the base directory containing the hash folders
-base_dir = "array_parts"
+base_dir = "part2/array_parts"
 
 # Get a list of all hash folders
 hash_folders = sorted([f for f in os.listdir(base_dir) if os.path.isdir(os.path.join(base_dir, f))])
@@ -57,4 +57,4 @@ print("Shape:", numpydata_ordered.shape)
 image = Image.fromarray(numpydata_ordered.astype(np.uint8))
 
 # Save the image to a file
-image.save('output_image1.png')
+image.save('output_image2.png')

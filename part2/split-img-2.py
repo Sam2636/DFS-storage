@@ -1,9 +1,10 @@
 import os
 import hashlib
 import numpy as np
-from PIL import Image
+import cv2
+
 # Define the base directory containing the hash folders
-base_dir = "array_parts"
+base_dir = "part2/array_parts"
 
 # Get a list of all hash folders
 hash_folders = sorted([f for f in os.listdir(base_dir) if os.path.isdir(os.path.join(base_dir, f))])
@@ -44,17 +45,9 @@ for hash_folder in hash_folders:
 # Concatenate the ordered parts into a single NumPy array
 numpydata_ordered = np.concatenate(ordered_parts, axis=0)
 
-# Print the resulting ordered NumPy array
-print("Ordered NumPy Array:")
-print(numpydata_ordered)
-print("Shape:", numpydata_ordered.shape)
-
-
-
-# Assuming you have a NumPy array called numpydata_ordered
-
-# Create an image from the NumPy array
-image = Image.fromarray(numpydata_ordered.astype(np.uint8))
+print(numpydata_ordered.shape)
+# Convert the NumPy array to an image using OpenCV
+reconstructed_image = cv2.cvtColor(numpydata_ordered, cv2.COLOR_BGR2RGB)
 
 # Save the image to a file
-image.save('output_image1.png')
+cv2.imwrite('output_image6.png', reconstructed_image)
